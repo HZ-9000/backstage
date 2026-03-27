@@ -1,0 +1,29 @@
+{
+  "name": "Backstage",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+
+  "runArgs": [
+    "--env-file",
+    "${localWorkspaceFolder}/.env",
+    "--network",
+    "host"
+  ],
+
+  "forwardPorts": [3000, 7007],
+  "portsAttributes": {
+    "3000": { "label": "Frontend", "onAutoForward": "notify" },
+    "7007": { "label": "Backend", "onAutoForward": "notify" }
+  },
+
+  "postCreateCommand": "yarn install",
+
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  }
+}
